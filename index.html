@@ -1717,5 +1717,15 @@
       <div class="footer-copyright">© 2026 All Rights Reserved</div>
     </div>
   </footer>
+
+  <script>
+    // 给Hero首屏按钮添加点击功能
+    document.querySelector('.hero-btn').addEventListener('click', function() {
+      // 平滑滚动到痛点洞察板块
+      document.getElementById('pain-points').scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
 </html>
