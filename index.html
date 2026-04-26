@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI+大数据英语提升平台</title>
+  <style>
+    /* 全局基础样式 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* 顶部导航栏 */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background-color: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 #e5e7eb;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+    }
+
+    .navbar-brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e40af;
+      text-decoration: none;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .navbar-links a {
+      color: #475569;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s ease;
+    }
+
+    .navbar-links a:hover {
+      color: #2563eb;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      color: #475569;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* Hero 首屏 */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 0;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: #475569;
+      margin-bottom: 32px;
+    }
+
+    .data-cards {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .data-card {
+      flex: 1;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .data-percentage {
+      font-size: 42px;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .data-label {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .hero-btn {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .hero-btn:hover {
+      background-color: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 32px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .data-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .data-card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    /* 痛点洞察 */
+    .pain-points {
+      background-color: #ffffff;
+      padding: 80px 24px;
+    }
+
+    .pain-points-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pain-points-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+    }
+
+    .pain-points-lead {
+      color: #475569;
+      font-size: 16px;
+      max-width: 700px;
+      margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+
+    .pain-cards {
+      display: flex;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .pain-card {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pain-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .pain-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .pain-card:nth-child(1)::before {
+      background-color: #ef4444;
+    }
+
+    .pain-card:nth-child(2)::before {
+      background-color: #f59e0b;
+    }
+
+    .pain-card:nth-child(3)::before {
+      background-color: #8b5cf6;
+    }
+
+    .pain-percentage {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+
+    .pain-card:nth-child(1) .pain-percentage {
+      color: #ef4444;
+    }
+
+    .pain-card:nth-child(2) .pain-percentage {
+      color: #f59e0b;
+    }
+
+    .pain-card:nth-child(3) .pain-percentage {
+      color: #8b5cf6;
+    }
+
+    .pain-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+
+    .pain-card-desc {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .pain-points {
+        padding: 48px 24px;
+      }
+
+      .pain-cards {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .pain-card {
+        width: 100%;
+      }
+    }
+
+    /* 项目宗旨 */
+    .mission {
+      background-color: #f0f9ff;
+      padding: 80px 24px;
+    }
+
+    .mission-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .mission-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #3b82f6;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .mission-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 24px;
+    }
+
+    .mission-text {
+      font-size: 16px;
+      color: #334155;
+      line-height: 1.9;
+      max-width: 750px;
+      margin: 0 auto 40px;
+    }
+
+    .mission-cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .mission-card {
+      flex: 1;
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      border-left: 3px solid #2563eb;
+      text-align: left;
+    }
+
+    .mission-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .mission-card-desc {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .mission {
+        padding: 48px 24px;
+      }
+
+      .mission-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .mission-card {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    /* 技术双引擎 */
+    .tech-engines {
+      background-color: #ffffff;
+      padding: 80px 24px;
+    }
+
+    .tech-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .tech-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #3b82f6;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .tech-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 16px;
+    }
+
+    .tech-subtitle {
+      font-size: 16px;
+      color: #64748b;
+      margin-bottom: 48px;
+    }
+
+    .tech-grid {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+    }
+
+    .tech-card {
+      flex: 1;
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 32px;
+      text-align: left;
+    }
+
+    .tech-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .tech-card:nth-child(1) .tech-icon {
+      background-color: #dbeafe;
+      color: #2563eb;
+    }
+
+    .tech-card:nth-child(2) .tech-icon {
+      background-color: #d1fae5;
+      color: #059669;
+    }
+
+    .tech-card-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+    }
+
+    .tech-card-desc {
+      font-size: 14px;
+      color: #64748b;
+      margin-bottom: 24px;
+    }
+
+    /* AI 三层架构 */
+    .ai-layers {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .ai-layers::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 24px;
+      bottom: 24px;
+      width: 2px;
+      background: linear-gradient(to bottom, #93c5fd, #3b82f6);
+      z-index: 1;
+    }
+
+    .ai-layer {
+      position: relative;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+      text-align: center;
+      font-size: 14px;
+      z-index: 2;
+    }
+
+    .ai-layer::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid #3b82f6;
+      z-index: 3;
+    }
+
+    .ai-layer:nth-child(1) {
+      background-color: #eff6ff;
+      border: 1px dashed #93c5fd;
+    }
+
+    .ai-layer:nth-child(2) {
+      background-color: #dbeafe;
+      border: 1px dashed #60a5fa;
+    }
+
+    .ai-layer:nth-child(3) {
+      background-color: #bfdbfe;
+      border: 1px dashed #3b82f6;
+    }
+
+    /* AI 核心能力 */
+    .ai-capabilities {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .ai-capability {
+      background-color: #f0f9ff;
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-size: 13px;
+      color: #1e40af;
+      text-align: center;
+    }
+
+    /* 大数据流程 */
+    .data-flow {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      align-items: center;
+    }
+
+    .data-step {
+      flex: 1;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      position: relative;
+    }
+
+    .data-step::after {
+      content: '→';
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 16px;
+    }
+
+    .data-step:last-child::after {
+      display: none;
+    }
+
+    .data-step:nth-child(1) {
+      background-color: #ecfdf5;
+      border: 1px solid #6ee7b7;
+    }
+
+    .data-step:nth-child(2) {
+      background-color: #d1fae5;
+      border: 1px solid #34d399;
+    }
+
+    .data-step:nth-child(3) {
+      background-color: #a7f3d0;
+      border: 1px solid #10b981;
+    }
+
+    .data-step:nth-child(4) {
+      background-color: #6ee7b7;
+      border: 1px solid #059669;
+    }
+
+    .data-step-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .data-step-desc {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* 雷达图占位 */
+    .radar-placeholder {
+      width: 200px;
+      height: 200px;
+      border: 2px dashed #cbd5e1;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+
+    .radar-text {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .radar-labels {
+      font-size: 12px;
+      color: #64748b;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    /* 图框占位 */
+    .figure-placeholder {
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 768px) {
+      .tech-engines {
+        padding: 48px 24px;
+      }
+
+      .tech-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .tech-card {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .data-flow {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .data-step {
+        width: 100%;
+      }
+
+      .data-step::after {
+        content: '↓';
+        right: 50%;
+        bottom: -12px;
+        top: auto;
+        transform: translateX(50%);
+      }
+    }
+
+    /* 五大学习模块 */
+    .modules {
+      background-color: #f8fafc;
+      padding: 80px 24px;
+    }
+
+    .modules-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .modules-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #3b82f6;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .modules-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+    }
+
+    .modules-subtitle {
+      font-size: 16px;
+      color: #64748b;
+      margin-bottom: 48px;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .module-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: left;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .module-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      background-color: #f0f9ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .module-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .module-pain {
+      background-color: #fef2f2;
+      color: #ef4444;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .module-features {
+      list-style: none;
+      width: 100%;
+    }
+
+    .module-features li {
+      font-size: 14px;
+      color: #475569;
+      line-height: 1.8;
+      margin-bottom: 8px;
+    }
+
+    .module-features li::before {
+      content: '✓ ';
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    .modules-figure {
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .modules {
+        padding: 48px 24px;
+      }
+
+      .modules-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .module-card {
+        width: 100%;
+      }
+    }
+
+    /* 五大痛点攻坚 */
+    .pain-solved {
+      background-color: #ffffff;
+      padding: 80px 24px 48px;
+    }
+
+    .pain-solved-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .pain-solved-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #ef4444;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .pain-solved-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 48px;
+    }
+
+    .pain-solved-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    .pain-solved-card {
+      flex: 1;
+      min-width: 200px;
+      max-width: calc(20% - 16px);
+      background-color: #fef2f2;
+      border-radius: 12px;
+      padding: 24px;
+      border-left: 3px solid #ef4444;
+      text-align: left;
+      position: relative;
+    }
+
+    .pain-solved-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #ef4444;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .pain-solved-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .pain-solved-card-desc {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .pain-solved-figure {
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 48px;
+    }
+
+    /* 四大创新优势 */
+    .advantages {
+      background-color: #f0f9ff;
+      padding: 48px 24px 80px;
+    }
+
+    .adv-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .adv-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #2563eb;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .adv-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 48px;
+    }
+
+    .adv-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .adv-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      text-align: left;
+      position: relative;
+    }
+
+    .adv-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .adv-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .adv-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 16px;
+      margin-bottom: 12px;
+    }
+
+    .adv-card-desc {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .adv-figures {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .adv-figure {
+      flex: 1;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 300px;
+    }
+
+    /* 三维价值 */
+    .value-system {
+      background-color: #ffffff;
+      padding: 80px 24px;
+    }
+
+    .value-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .value-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #8b5cf6;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .value-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 12px;
+    }
+
+    .value-subtitle {
+      font-size: 16px;
+      color: #64748b;
+      margin-bottom: 48px;
+    }
+
+    .value-cards {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .value-card {
+      flex: 1;
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #f0f9ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .value-card-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+
+    .value-card-desc {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.7;
+    }
+
+    .value-figures {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    .value-figure {
+      flex: 1;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 200px;
+    }
+
+    /* 实施路径 */
+    .roadmap {
+      background-color: #f8fafc;
+      padding: 80px 24px;
+    }
+
+    .roadmap-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .roadmap-tag {
+      font-size: 13px;
+      letter-spacing: 4px;
+      color: #059669;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .roadmap-title {
+      font-size: 30px;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin-bottom: 48px;
+    }
+
+    .roadmap-timeline {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      padding-top: 20px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 28px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #e2e8f0;
+      z-index: 0;
+    }
+
+    .roadmap-node {
+      flex: 1;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #2563eb;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 16px;
+    }
+
+    .timeline-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      text-align: left;
+      width: 250px;
+    }
+
+    .timeline-phase {
+      font-size: 18px;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 8px;
+    }
+
+    .timeline-subtitle {
+      font-size: 14px;
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .timeline-tasks {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .timeline-tasks li {
+      font-size: 13px;
+      color: #64748b;
+      line-height: 1.8;
+      position: relative;
+      padding-left: 16px;
+    }
+
+    .timeline-tasks li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    .roadmap-figures {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .roadmap-figure {
+      flex: 1;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: #94a3b8;
+      max-width: 200px;
+    }
+
+    /* 页脚 */
+    .footer {
+      background-color: #1e293b;
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .footer-subtitle {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+
+    .footer-copyright {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+      .pain-solved {
+        padding: 48px 24px;
+      }
+
+      .pain-solved-cards {
+        flex-direction: column;
+      }
+
+      .pain-solved-card {
+        max-width: 100%;
+      }
+
+      .advantages {
+        padding: 48px 24px;
+      }
+
+      .adv-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .adv-figures {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .adv-figure {
+        max-width: 100%;
+      }
+
+      .value-system {
+        padding: 48px 24px;
+      }
+
+      .value-cards {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .value-card {
+        width: 100%;
+      }
+
+      .value-figures {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .value-figure {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .roadmap {
+        padding: 48px 24px;
+      }
+
+      .roadmap-timeline {
+        flex-direction: column;
+        gap: 24px;
+        padding-top: 0;
+      }
+
+      .timeline-line {
+        display: none;
+      }
+
+      .roadmap-node {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .timeline-dot {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .timeline-card {
+        width: 100%;
+      }
+
+      .roadmap-figures {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .roadmap-figure {
+        max-width: 100%;
+        width: 100%;
+      }
+
+      .footer {
+        padding: 32px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <header>
+    <nav class="navbar container">
+      <a href="#" class="navbar-brand">AI+大数据 · 英语提升平台</a>
+      <ul class="navbar-links">
+        <li><a href="#pain-points">痛点</a></li>
+        <li><a href="#solution">方案</a></li>
+        <li><a href="#tech">技术</a></li>
+        <li><a href="#modules">模块</a></li>
+        <li><a href="#advantages">优势</a></li>
+        <li><a href="#value">价值</a></li>
+      </ul>
+      <span class="hamburger">☰</span>
+    </nav>
+  </header>
+
+  <!-- Hero 首屏 -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">AI+大数据 让英语学习真正因材施教</h1>
+      <p class="hero-subtitle">全场景 · 全流程 · 个性化 大学生英语智能提升平台</p>
+      <div class="data-cards">
+        <div class="data-card">
+          <div class="data-percentage">78%</div>
+          <div class="data-label">口语表达困难</div>
+        </div>
+        <div class="data-card">
+          <div class="data-percentage">65%</div>
+          <div class="data-label">听力理解薄弱</div>
+        </div>
+        <div class="data-card">
+          <div class="data-percentage">62%</div>
+          <div class="data-label">作文缺乏有效反馈</div>
+        </div>
+      </div>
+      <button class="hero-btn">探索智能学习闭环 →</button>
+    </div>
+  </section>
+
+  <!-- 痛点洞察 -->
+  <section class="pain-points" id="pain-points">
+    <div class="pain-points-content">
+      <h2 class="pain-points-title">当代大学生英语学习的核心痛点</h2>
+      <p class="pain-points-lead">基于多篇权威文献调研数据的系统统计与深度分析，当前大学生英语学习面临的最突出问题集中体现在口语表达、听力理解与写作反馈三大方面。</p>
+      <div class="pain-cards">
+        <div class="pain-card">
+          <div class="pain-percentage">78%</div>
+          <div class="pain-card-title">口语表达困难</div>
+          <p class="pain-card-desc">"哑巴英语"现象突出，真实交流场景缺失，缺乏即时反馈与纠错指导</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-percentage">65%</div>
+          <div class="pain-card-title">听力理解薄弱</div>
+          <p class="pain-card-desc">传统听力资源固化，精听训练繁琐低效，错题复盘缺乏系统性</p>
+        </div>
+        <div class="pain-card">
+          <div class="pain-percentage">62%</div>
+          <div class="pain-card-title">作文缺乏有效反馈</div>
+          <p class="pain-card-desc">写作批改周期长，语法错误难以及时纠正，表达提升停滞</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目宗旨 -->
+  <section class="mission" id="solution">
+    <div class="mission-content">
+      <div class="mission-tag">OUR MISSION</div>
+      <h2 class="mission-title">项目研究目的与平台宗旨</h2>
+      <p class="mission-text">本项目以人工智能与大数据两大核心技术为双轮驱动，深度融合智能交互、精准分析、个性化推送等能力，致力于系统性破解传统英语学习资源分散、反馈滞后、训练低效、场景缺失等长期痛点，构建覆盖听、说、读、写、练、测、评、管全场景、全流程的个性化学习辅助系统，为大学生提供高效、便捷、智能、精准的英语学习支持。</p>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <div class="mission-card-title">AI 智能交互与实时辅导</div>
+          <p class="mission-card-desc">依托大语言模型与语音技术，实现全场景智能学习辅助</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-card-title">大数据精准分析与个性化推送</div>
+          <p class="mission-card-desc">全维度采集学习行为数据，构建动态用户画像</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-card-title">全链路闭环学习体系</div>
+          <p class="mission-card-desc">覆盖输入、练习、反馈、提升全周期，形成高效学习闭环</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 技术双引擎 -->
+  <section class="tech-engines" id="tech">
+    <div class="tech-content">
+      <div class="tech-tag">TECHNICAL ARCHITECTURE</div>
+      <h2 class="tech-title">双引擎驱动的全链路智能技术架构</h2>
+      <p class="tech-subtitle">人工智能 + 大数据 深度融合，协同发力</p>
+      <div class="tech-grid">
+        <!-- AI 技术引擎 -->
+        <div class="tech-card">
+          <div class="tech-icon">AI</div>
+          <h3 class="tech-card-title">人工智能（AI）技术</h3>
+          <p class="tech-card-desc">全场景 AI 赋能，破解学习辅导痛点</p>
+          <div class="ai-layers">
+            <div class="ai-layer">上层 · 场景应用 —— 口语评测 | 作文批改 | 长难句解析 | 情景对话 | 学习报告</div>
+            <div class="ai-layer">中层 · 核心处理 —— 语音解析 | 语义理解 | 智能批改 | 错题评测 | 数据统计</div>
+            <div class="ai-layer">底层 · 技术引擎 —— AI 大模型 | 语音识别 | 文本处理 | AIGC 生成</div>
+          </div>
+          <div class="ai-capabilities">
+            <div class="ai-capability">口语语音识别与纠错</div>
+            <div class="ai-capability">作文智能批改与润色</div>
+            <div class="ai-capability">长难句AI拆解与语法讲解</div>
+            <div class="ai-capability">AIGC素材与题库生成</div>
+          </div>
+        </div>
+        <!-- 大数据技术引擎 -->
+        <div class="tech-card">
+          <div class="tech-icon">DATA</div>
+          <h3 class="tech-card-title">大数据分析技术</h3>
+          <p class="tech-card-desc">数据驱动精准画像，实现个性化因材施教</p>
+          <div class="data-flow">
+            <div class="data-step">
+              <div class="data-step-title">数据采集</div>
+              <div class="data-step-desc">自动无感采集学习行为数据</div>
+            </div>
+            <div class="data-step">
+              <div class="data-step-title">数据处理</div>
+              <div class="data-step-desc">清洗、去重、标准化与深度挖掘</div>
+            </div>
+            <div class="data-step">
+              <div class="data-step-title">画像构建</div>
+              <div class="data-step-desc">生成可视化五维能力画像</div>
+            </div>
+            <div class="data-step">
+              <div class="data-step-title">内容推荐</div>
+              <div class="data-step-desc">精准推送专属学习内容与路径</div>
+            </div>
+          </div>
+          <div class="radar-placeholder">
+            <div class="radar-text">五维能力雷达图（图4）</div>
+          </div>
+          <div class="radar-labels">听力 · 口语 · 阅读 · 写作 · 语法</div>
+          <div class="figure-placeholder">
+            图（2）AI技术架构原理图 / 图（3）全场景智能化学习辅助系统
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五大学习模块 -->
+  <section class="modules" id="modules">
+    <div class="modules-content">
+      <div class="modules-tag">LEARNING MODULES</div>
+      <h2 class="modules-title">全维度一体化专项提升模块</h2>
+      <p class="modules-subtitle">覆盖听说读写四大核心能力 + 个性化智能管理</p>
+      <div class="modules-grid">
+        <!-- 听力专项 -->
+        <div class="module-card">
+          <div class="module-icon">🎧</div>
+          <h3 class="module-title">听力专项</h3>
+          <div class="module-pain">解决资源固化 · 精听低效</div>
+          <ul class="module-features">
+            <li>AI智能生成分级听力素材</li>
+            <li>逐句精听与断点播放</li>
+            <li>生词自动高亮标注与词义解析</li>
+            <li>错题自动收录与错误原因分析</li>
+          </ul>
+        </div>
+        <!-- 口语专项 -->
+        <div class="module-card">
+          <div class="module-icon">🎙️</div>
+          <h3 class="module-title">口语专项</h3>
+          <div class="module-pain">解决开口难 · 发音差</div>
+          <ul class="module-features">
+            <li>实时语音交互AI引擎</li>
+            <li>发音评分与语调智能纠错</li>
+            <li>标准发音对比与波形对照</li>
+            <li>AI虚拟对话伙伴多轮互动</li>
+          </ul>
+        </div>
+        <!-- 阅读专项 -->
+        <div class="module-card">
+          <div class="module-icon">📖</div>
+          <h3 class="module-title">阅读专项</h3>
+          <div class="module-pain">突破长难句 · 刷题低效</div>
+          <ul class="module-features">
+            <li>长难句AI一键拆解与结构可视化</li>
+            <li>语法点思维导图讲解</li>
+            <li>全文翻译对照与生词实时释义</li>
+            <li>错题归纳与薄弱补强推送</li>
+          </ul>
+        </div>
+        <!-- 写作专项 -->
+        <div class="module-card">
+          <div class="module-icon">✍️</div>
+          <h3 class="module-title">写作专项</h3>
+          <div class="module-pain">解决缺思路 · 缺批改</div>
+          <ul class="module-features">
+            <li>智能审题立意与框架搭建</li>
+            <li>全文语法纠错与语句润色</li>
+            <li>作文综合评分与写作报告</li>
+            <li>亮点句型积累与易错提醒</li>
+          </ul>
+        </div>
+        <!-- 个性化智能系统 -->
+        <div class="module-card">
+          <div class="module-icon">📊</div>
+          <h3 class="module-title">个性化智能系统</h3>
+          <div class="module-pain">个性化诊断 · 科学规划</div>
+          <ul class="module-features">
+            <li>五维能力雷达图直观展示</li>
+            <li>每日任务→本周目标→月度提升路径</li>
+            <li>薄弱点专项训练与阶段模拟测试</li>
+            <li>学习数据可视化与AI智能复盘</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modules-figure">
+        图（5）听力模块示意图 / 图（6）口语模块示意图 / 图（7）阅读模块示意图 / 图（8）写作模块示意图 / 图（9）个性化智能系统示意图
+      </div>
+    </div>
+  </section>
+
+  <!-- 五大痛点攻坚 -->
+  <section class="pain-solved" id="advantages">
+    <div class="pain-solved-content">
+      <div class="pain-solved-tag">PAIN POINTS SOLVED</div>
+      <h2 class="pain-solved-title">痛点攻坚：系统性破解五大传统学习桎梏</h2>
+      <div class="pain-solved-cards">
+        <div class="pain-solved-card">
+          <div class="pain-solved-number">1</div>
+          <div class="pain-solved-card-title">资源壁垒割裂</div>
+          <div class="pain-solved-card-desc">学习资源碎片化，多平台频繁切换，缺乏一站式学习生态</div>
+        </div>
+        <div class="pain-solved-card">
+          <div class="pain-solved-number">2</div>
+          <div class="pain-solved-card-title">学习路径盲目</div>
+          <div class="pain-solved-card-desc">以统一教材、海量刷题为主，无法精准定位个人薄弱环节</div>
+        </div>
+        <div class="pain-solved-card">
+          <div class="pain-solved-number">3</div>
+          <div class="pain-solved-card-title">能力发展割裂</div>
+          <div class="pain-solved-card-desc">听说读写训练相互独立，无法形成联动提升机制</div>
+        </div>
+        <div class="pain-solved-card">
+          <div class="pain-solved-number">4</div>
+          <div class="pain-solved-card-title">专业反馈缺失</div>
+          <div class="pain-solved-card-desc">口语缺乏实时纠正，作文缺乏精细批改，输出能力停滞</div>
+        </div>
+        <div class="pain-solved-card">
+          <div class="pain-solved-number">5</div>
+          <div class="pain-solved-card-title">学习规划失衡</div>
+          <div class="pain-solved-card-desc">自主规划能力不足，碎片化时间难以高效利用</div>
+        </div>
+      </div>
+      <div class="pain-solved-figure">
+        图（10）资源壁垒示意图 / 图（11）学习规划失衡示意图
+      </div>
+    </div>
+  </section>
+
+  <!-- 四大创新优势 -->
+  <section class="advantages" id="value">
+    <div class="adv-content">
+      <div class="adv-tag">CORE INNOVATIONS</div>
+      <h2 class="adv-title">模式革新：四大差异化核心创新优势</h2>
+      <div class="adv-grid">
+        <div class="adv-card">
+          <div class="adv-number">1</div>
+          <div class="adv-card-title">全场景生态融合</div>
+          <div class="adv-card-desc">一体化整合听说读写四大核心模块，资源互通、数据同步、场景衔接，构建一站式闭环学习生态，告别多平台切换，实现全内容、全工具、全流程聚合。</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-number">2</div>
+          <div class="adv-card-title">双引擎精准施教</div>
+          <div class="adv-card-desc">以AI大模型+大数据双驱动，全维度采集学习行为数据，构建高精度能力画像，动态适配学习难度、定制学习路径，实现千人千面、因材施教。</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-number">3</div>
+          <div class="adv-card-title">全链路闭环赋能</div>
+          <div class="adv-card-desc">搭建学习输入→专项练习→智能批改→数据复盘→针对性提升全周期AI服务链路，实现反馈前置化、辅导实时化、错题即时化、提升可视化。</div>
+        </div>
+        <div class="adv-card">
+          <div class="adv-number">4</div>
+          <div class="adv-card-title">锚定校园轻量化应用</div>
+          <div class="adv-card-desc">功能设计深度贴合四六级、考研、复试口语等校园刚需，界面简洁、操作便捷、轻量化运行，高度适配学生碎片化学习习惯。</div>
+        </div>
+      </div>
+      <div class="adv-figures">
+        <div class="adv-figure">图（12）全场景生态融合</div>
+        <div class="adv-figure">图（13）双引擎精准施教</div>
+        <div class="adv-figure">图（14）全链路闭环赋能 / 校园轻量化应用</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三维价值 -->
+  <section class="value-system">
+    <div class="value-content">
+      <div class="value-tag">VALUE SYSTEM</div>
+      <h2 class="value-title">三维度多元应用价值体系</h2>
+      <p class="value-subtitle">用户成长 · 教育发展 · 市场运营 协同增益</p>
+      <div class="value-cards">
+        <div class="value-card">
+          <div class="value-icon">👤</div>
+          <div class="value-card-title">用户价值</div>
+          <p class="value-card-desc">为大学生提供个性化、一站式、高效率、低成本的英语学习支持，精准定位薄弱环节、科学优化学习路径，全面提升听说读写综合能力，助力四六级、考研等考试通关，增强学业表现与就业核心竞争力。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🌍</div>
+          <div class="value-card-title">社会价值</div>
+          <p class="value-card-desc">助力高校外语教育数字化转型与智慧教学升级，填补校园个性化智能英语学习工具空白；推动AI教育资源普惠化、均衡化发展，打破优质资源时空限制，促进教育公平；有效改善"哑巴英语"现状，提升青年学生国际化语言应用素养。</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💼</div>
+          <div class="value-card-title">商业价值</div>
+          <p class="value-card-desc">平台模式轻量化、开发成本可控、功能迭代高效，目标用户群体明确、需求稳定、市场空间广阔。可通过校企合作、校园推广、功能增值服务等方式实现规模化运营，兼具教育公益属性与可持续商业发展潜力。</p>
+        </div>
+      </div>
+      <div class="value-figures">
+        <div class="value-figure">图（15）用户价值</div>
+        <div class="value-figure">图（16）社会价值</div>
+        <div class="value-figure">图（17）商业价值</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 实施路径 -->
+  <section class="roadmap">
+    <div class="roadmap-content">
+      <div class="roadmap-tag">ROADMAP</div>
+      <h2 class="roadmap-title">分阶段稳步落地全周期实施方案</h2>
+      <div class="roadmap-timeline">
+        <div class="timeline-line"></div>
+        <div class="roadmap-node">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-phase">前期阶段</div>
+            <div class="timeline-subtitle">需求调研与基础搭建</div>
+            <ul class="timeline-tasks">
+              <li>大学生英语学习需求调研与竞品分析</li>
+              <li>技术路线选型与AI接口对接方案</li>
+              <li>数据库、素材库、题库与知识库搭建</li>
+              <li>平台原型设计与交互初稿</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-phase">中期阶段</div>
+            <div class="timeline-subtitle">核心模块开发与功能集成</div>
+            <ul class="timeline-tasks">
+              <li>听说读写四大核心模块开发</li>
+              <li>AI语音识别、作文批改、长难句解析接入</li>
+              <li>大数据用户画像与推荐算法调试</li>
+              <li>各模块联调与界面交互优化</li>
+            </ul>
+          </div>
+        </div>
+        <div class="roadmap-node">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-phase">后期阶段</div>
+            <div class="timeline-subtitle">测试优化与上线推广</div>
+            <ul class="timeline-tasks">
+              <li>平台内测、压力测试与漏洞修复</li>
+              <li>高校小范围试点与用户反馈收集</li>
+              <li>学习数据可视化与AI复盘功能完善</li>
+              <li>正式上线与校园推广运营</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="roadmap-figures">
+        <div class="roadmap-figure">图（18）全周期实施规划</div>
+        <div class="roadmap-figure">图（19）前期阶段详情</div>
+        <div class="roadmap-figure">图（20）中期阶段详情</div>
+        <div class="roadmap-figure">图（21）后期阶段详情</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-title">AI+大数据驱动的大学生全场景英语提升平台</div>
+      <div class="footer-subtitle">安徽省大数据与人工智能应用竞赛 · 教育赛道</div>
+      <div class="footer-copyright">© 2026 All Rights Reserved</div>
+    </div>
+  </footer>
+</body>
+</html>
